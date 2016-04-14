@@ -247,12 +247,20 @@ class GenerateModelsCommand extends GeneratorCommand
     private function generateHasManyFunctions($rulesContainer)
     {
         $functions = '';
+        $fucked=array();
         foreach ($rulesContainer as $rules) {
             $hasManyModel = $this->generateModelNameFromTableName($rules[0]);
             $key1 = $rules[1];
             $key2 = $rules[2];
 
             $hasManyFunctionName = $this->getPluralFunctionName($hasManyModel);
+
+            if (in_array($hasManyFunctionName, $fucked)) {
+                $hasManyFunctionName = "{$hasManyFunctionName}_{$key1}";
+            }
+
+            $fucked[] = $hasManyFunctionName;
+
 
             $function = "
     public function $hasManyFunctionName() {".'
@@ -289,12 +297,21 @@ class GenerateModelsCommand extends GeneratorCommand
     private function generateBelongsToFunctions($rulesContainer)
     {
         $functions = '';
+
+        $fucked = array();
+
         foreach ($rulesContainer as $rules) {
             $belongsToModel = $this->generateModelNameFromTableName($rules[0]);
             $key1 = $rules[1];
             $key2 = $rules[2];
 
             $belongsToFunctionName = $this->getSingularFunctionName($belongsToModel);
+
+            if (in_array($belongsToFunctionName, $fucked)) {
+                $belongsToFunctionName = "{$belongsToFunctionName}_{$key1}";
+            }
+
+            $fucked[] = $belongsToFunctionName;
 
             $function = "
     public function $belongsToFunctionName() {".'
@@ -310,6 +327,7 @@ class GenerateModelsCommand extends GeneratorCommand
     private function generateBelongsToManyFunctions($rulesContainer)
     {
         $functions = '';
+        $fucked = array();
         foreach ($rulesContainer as $rules) {
             $belongsToManyModel = $this->generateModelNameFromTableName($rules[0]);
             $through = $rules[1];
@@ -317,6 +335,12 @@ class GenerateModelsCommand extends GeneratorCommand
             $key2 = $rules[3];
 
             $belongsToManyFunctionName = $this->getPluralFunctionName($belongsToManyModel);
+
+            if (in_array($belongsToManyFunctionName, $fucked)) {
+                $belongsToManyFunctionName = "{$belongsToManyFunctionName}_{$key1}";
+            }
+
+            $fucked[] = $belongsToManyFunctionName;
 
             $function = "
     public function $belongsToManyFunctionName() {".'
