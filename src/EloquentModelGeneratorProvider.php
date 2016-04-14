@@ -19,7 +19,7 @@ class EloquentModelGeneratorProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('command.models.generate', function ($app) {
-            return $app['User11001\EloquentModelGenerator\Console\GenerateModelsCommand'];
+            return $app['Weconstudio\EloquentModelGenerator\Console\GenerateModelsCommand'];
         });
 
         $this->commands('command.models.generate');
