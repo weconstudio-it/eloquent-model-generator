@@ -1,13 +1,13 @@
 {
-    "name": "user11001/eloquent-model-generator",
+    "name": "weconstudio/eloquent-model-generator",
     "description": "Auto-generates all Eloquent models from the database in a Laravel 5 project.",
     "keywords": ["laravel", "model", "eloquent", "artisan"],
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
         {
-            "name": "Pepijn Olivier",
-            "email": "olivier.pepijn@gmail.com"
+            "name": "Weconstudio",
+            "email": "info@weconstudio.it"
         }
     ],
     "require": {
@@ -23,7 +23,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "User11001\\EloquentModelGenerator\\": "src/"
+            "Weconstudio\\EloquentModelGenerator\\": "src/"
         }
     },
     "require-dev": {
