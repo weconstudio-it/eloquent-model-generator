@@ -1,6 +1,6 @@
 <?php
 
-namespace User11001\EloquentModelGenerator;
+namespace Weconstudio\EloquentModelGenerator;
 
 use Illuminate\Support\ServiceProvider;
 
