@@ -1,6 +1,6 @@
 <?php
 
-namespace User11001\EloquentModelGenerator\Console;
+namespace Weconstudio\EloquentModelGenerator\Console;
 
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\InputOption;
